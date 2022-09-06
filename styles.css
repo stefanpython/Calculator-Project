@@ -1,9 +1,41 @@
 .container {
     margin: auto;
-    display: flex;
+    
     /* justify-content: center;
     align-items: center; */
-    height: 500px;
+    height: 550px;
     width: 400px;
-    outline: 5px solid green;
+    outline: 2px solid green;
+}
+
+.display {
+    display: flex;
+    outline: 2px solid black;
+    height: 100px;
+    width: 360px;
+    margin-top: 30px;
+    margin-left: 20px;
+    position: absolute;
+}
+
+
+.all-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    height: 70%;
+    width: 90%;
+    grid-gap: .2rem;
+    padding: 1rem;
+    margin-left: 4px;
+    padding-top: 150px;
+    }
+
+.equals {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 200px;
+    margin-top: -91px;
+    height: 75px;
+    width: 180px;
 }
