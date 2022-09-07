@@ -47,3 +47,19 @@ function calculator(a, b, operand) {
       }
     return output;
 }
+
+// Select all buttons with class='digits'
+const buttons = document.querySelectorAll('.digits');
+
+// Select the display (user input display)
+const display = document.querySelector('.user-input');
+
+let userInput = '';
+
+// Loop through all buttons with class='digits' and return value
+buttons.forEach((elem) => {
+    elem.addEventListener('click', () => {
+        userInput = parseInt(display.textContent += elem.value);
+        return userInput;
+    })
+})
