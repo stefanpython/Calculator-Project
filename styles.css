@@ -55,3 +55,7 @@ button {
 output {
     font-size: 40px;
 }
+
+.user-input {
+    margin-right: 25px;
+}
