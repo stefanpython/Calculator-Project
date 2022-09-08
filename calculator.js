@@ -54,12 +54,24 @@ const buttons = document.querySelectorAll('.digits');
 // Select the display (user input display)
 const display = document.querySelector('.user-input');
 
-let userInput = '';
 
-// Loop through all buttons with class='digits' and return value
-buttons.forEach((elem) => {
-    elem.addEventListener('click', () => {
-        userInput = parseInt(display.textContent += elem.value);
-        return userInput;
+// Loop through all buttons with class='digits' and store the value in userInput variable
+let userInput = 0; // variable to keep track of initial user input 
+
+    buttons.forEach((btn) => {
+        btn.addEventListener('click', (btn) => {
+            // Show user input on calculator display
+            display.textContent += btn.target.value;
+
+            // Store user string input in a variable and convert it to a number 
+            userInput = display.textContent;
+            userInput = parseInt(userInput)
+            
+            // Allow a number of a maximum of 15 digits
+            if (display.textContent.length > 15) {
+                display.textContent = display.textContent.slice(0, 15);
+            }
+
+        }) 
     })
-})
+    
