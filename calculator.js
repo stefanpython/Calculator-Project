@@ -62,7 +62,9 @@ const display = document.querySelector('.user-input');
 // variable to keep track of initial user input 
 let userInput = 0; 
 
-    // Loop through all buttons with class='digits' and store the value in userInput variable
+function displayValue() {
+
+     // Loop through all buttons with class='digits' and store the value in userInput variable
 buttons.forEach((btn) => {
     btn.addEventListener('click', (btn) => {
 
@@ -84,6 +86,11 @@ buttons.forEach((btn) => {
         }
     }) 
 })
+   
+}
+
+displayValue();
+   
     
 
     // -- Part 4
@@ -91,40 +98,73 @@ buttons.forEach((btn) => {
 // Select all operator buttons
 const operators = document.querySelectorAll(".operators");
 
-let result = 0;
-let operator = '';
-let operatorID = '';
-let total = 0;
+let count = 0;
+let operatorValue = '';
 
-operators.forEach((opr) => {
-    opr.addEventListener("click", (opr) => {
+function operatorType () {
 
+    operators.forEach((opr) => {
+        opr.addEventListener("click", (opr) => {
+            
+            operatorValue = opr.target.value;
+            display.textContent += operatorValue;
+            count++;
+            console.log(operatorValue);
+            
+            if (count > 1) {
+                operate();
+                display.textContent += operatorValue;  
+            }
+        })
         
-
-        operatorValue = opr.target.value;
-        operatorID = opr.target.id;
-        console.log(operatorValue)
-
-        if (operatorID === 'plus') {
-
-            // Add total value to new user input each time + is pressed
-            total += userInput;
-
-            // If 'plus' button is pressed after userInput, calculate total value and clear display
-            total = calculate(userInput, result, operatorValue)
-
-            // Keep count of total in a variable named 'result'
-            result = total;
-            display.textContent = '';
-
-        } else if (operatorID === 'equals') {
-
-            // Add total value to new user input each time = is pressed
-            total += userInput;
-
-            // If equals is pressed, display the result from the operation aka 'total' to the screen
-            display.textContent = total;
-        }       
     })
-})
+
+    return operatorValue;
+    
+}
+
+operatorType();
+
+
+let result = 0;
+
+function operate() {
+    let operator = '';
+    let newNum = display.textContent.split('');
+
+    // Extract operator value and save it to a variable
+    for (let i = 0; i < newNum.length; i++) {
+        if (newNum[i] === '+') {
+            operator = '+';
+            
+        } else if (newNum[i] === '-') {
+            operator = '-';
+        } else if (newNum[i] === '/') {
+            operator = '/';
+        } else if (newNum[i] === '*') {
+            operator = '*';   
+        } else if (newNum[i] === '=') {
+            
+        }
+    }
+    
+    
+    let a = Number(newNum.join('').split(operator)[0]);
+    let b = Number(newNum.join('').split(operator)[1]);
+
+    if (newNum[0] === '-'){
+        a = -Number(newNum.join('').split(operator)[1]);
+        b = Number(newNum.join('').split(operator)[2]);
+    }
+    result = calculate(a, b, operator);
+    
+    
+    if (display.textContent == 0) {
+        display.textContent = '';
+    }else {
+        return display.textContent = result;
+    }
+    
+
+}
 
