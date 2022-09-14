@@ -114,11 +114,13 @@ function operatorType () {
             if (count > 1) {
                 operate();
                 display.textContent += operatorValue;  
+                
                 // Implement corect result when pressing '='
                 if (operatorValue === '=') {
                    let equalValue = display.textContent.slice(0, -1);
                    display.textContent = equalValue;
-                }
+                   count = 0;
+                } 
             }
             
         })
