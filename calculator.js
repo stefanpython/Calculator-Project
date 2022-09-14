@@ -109,7 +109,10 @@ function operatorType () {
             operatorValue = opr.target.value;
             display.textContent += operatorValue;
             count++;
+
+            display.textContent = display.textContent;
             console.log(operatorValue);
+            console.log(display.textContent);
             
             if (count > 1) {
                 operate();
@@ -121,6 +124,8 @@ function operatorType () {
                    display.textContent = equalValue;
                    count = 0;
                 } 
+
+                
             }
             
         })
@@ -137,6 +142,7 @@ operatorType();
 let result = 0;
 
 function operate() {
+    
     let operator = '';
     let newNum = display.textContent.split('');
 
@@ -166,6 +172,7 @@ function operate() {
         b = Number(newNum.join('').split(operator)[2]);
     }
 
+    // Implement corect result when pressing '='
     if (operator === '=') {
         let arr = newNum.slice(0, -1);
         for (let foo = 0; foo < arr.length; foo++){
@@ -181,10 +188,35 @@ function operate() {
     }
     a = Number(arr.join('').split(operator)[0]);
     b = Number(arr.join('').split(operator)[1]);
-}
+
+    if (newNum[0] === '-'){
+        a = -Number(arr.join('').split(operator)[1]);
+        b = Number(arr.join('').split(operator)[2]);
+        }
+    }
+   
+    // Loop for doing operation with different operators
+    let last = newNum[newNum.length - 1];
+    if (last === '-' || last === '+' || last === '*' || last === '/') {
+        let bar = newNum.slice(0, -1);
+        for (let j = 0; j < bar.length; j++) {
+            if (bar[j] === '+') {
+                operator = '+'; 
+            } else if (bar[j] === '-') {
+                operator = '-';
+            } else if (bar[j]=== '/') {
+                operator = '/';
+            } else if (bar[j] === '*') {
+                operator = '*';   
+        }
+        }
+        a = Number(bar.join('').split(operator)[0]);
+        b = Number(bar.join('').split(operator)[1]);
+    }
+
     
+
     result = calculate(a, b, operator);
-    
     
     if (display.textContent == 0) {
         display.textContent = '';
