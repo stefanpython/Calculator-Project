@@ -114,7 +114,13 @@ function operatorType () {
             if (count > 1) {
                 operate();
                 display.textContent += operatorValue;  
+                // Implement corect result when pressing '='
+                if (operatorValue === '=') {
+                   let equalValue = display.textContent.slice(0, -1);
+                   display.textContent = equalValue;
+                }
             }
+            
         })
         
     })
@@ -135,8 +141,7 @@ function operate() {
     // Extract operator value and save it to a variable
     for (let i = 0; i < newNum.length; i++) {
         if (newNum[i] === '+') {
-            operator = '+';
-            
+            operator = '+'; 
         } else if (newNum[i] === '-') {
             operator = '-';
         } else if (newNum[i] === '/') {
@@ -144,6 +149,7 @@ function operate() {
         } else if (newNum[i] === '*') {
             operator = '*';   
         } else if (newNum[i] === '=') {
+            operator = '=';
             
         }
     }
@@ -152,10 +158,29 @@ function operate() {
     let a = Number(newNum.join('').split(operator)[0]);
     let b = Number(newNum.join('').split(operator)[1]);
 
+    // Add negative numbers
     if (newNum[0] === '-'){
         a = -Number(newNum.join('').split(operator)[1]);
         b = Number(newNum.join('').split(operator)[2]);
     }
+
+    if (operator === '=') {
+        let arr = newNum.slice(0, -1);
+        for (let foo = 0; foo < arr.length; foo++){
+            if (arr[foo] === '+') {
+                operator = '+'; 
+            } else if (arr[foo] === '-') {
+                operator = '-';
+            } else if (arr[foo] === '/') {
+                operator = '/';
+            } else if (arr[foo] === '*') {
+                operator = '*';   
+        }
+    }
+    a = Number(arr.join('').split(operator)[0]);
+    b = Number(arr.join('').split(operator)[1]);
+}
+    
     result = calculate(a, b, operator);
     
     
