@@ -1,4 +1,3 @@
-// --Part 1
 function add(a, b) {
     return a + b;
 };
@@ -15,7 +14,7 @@ function divide(a, b) {
     return a / b; 
 }
 
-// --Part 2
+
 function calculate(a, b, operand) {
     let output = 0;
 
@@ -49,8 +48,6 @@ function calculate(a, b, operand) {
     return output;
 }
 
-
-// --Part 3
 
 // Select all buttons with class='digits'
 const buttons = document.querySelectorAll('.digits');
@@ -91,9 +88,6 @@ buttons.forEach((btn) => {
 
 displayValue();
    
-    
-
-    // -- Part 4
     
 // Select all operator buttons
 const operators = document.querySelectorAll(".operators");
@@ -231,12 +225,15 @@ function operate() {
     
 }
 
+
 // Add clear button 
 const clear = document.getElementById('delete');
 
 clear.addEventListener('click', () => {
+    decimal.disabled = false;
     display.textContent = '';
 })
+
 
 // Implement feature to add '.' 
 const decimal = document.getElementById('dot');
@@ -252,3 +249,10 @@ decimal.addEventListener('click', () => {
     }
 })
 
+
+// Add backspace feature when C button is clicked
+const backSpace = document.getElementById('backspace');
+
+backSpace.addEventListener('click', () => {
+    display.textContent = display.textContent.slice(0, -1)
+})
