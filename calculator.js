@@ -134,12 +134,12 @@ operatorType();
 
 
 let result = 0;
-let z = 0;
+let newNum = '';
 
 function operate() {
     
     let operator = '';
-    let newNum = display.textContent.split('');
+    newNum = display.textContent.split('');
 
     // Extract operator value and save it to a variable
     for (let i = 0; i < newNum.length; i++) {
@@ -211,7 +211,7 @@ function operate() {
 
     // Display error message if user tries to divide by 0;
     if (b === 0) {
-        return display.textContent = '0 division detected, can`t do it dummy.'
+        return display.textContent = 'LMAO'
     }else {
         result = calculate(a, b, operator);
     }
@@ -256,3 +256,36 @@ const backSpace = document.getElementById('backspace');
 backSpace.addEventListener('click', () => {
     display.textContent = display.textContent.slice(0, -1)
 })
+
+
+
+
+
+function keyboardSuport(){
+    document.addEventListener('keydown', (event) => {
+        if (event.key == "0") {document.querySelector('#digit-0').click()}
+        else if (event.key == "1") {document.querySelector('#digit-1').click()}
+        else if (event.key == "2") {document.querySelector('#digit-2').click()}
+        else if (event.key == "3") {document.querySelector('#digit-3').click()}
+        else if (event.key == "4") {document.querySelector('#digit-4').click()}
+        else if (event.key == "5") {document.querySelector('#digit-5').click()}
+        else if (event.key == "6") {document.querySelector('#digit-6').click()}
+        else if(event.key == "7") {document.querySelector('#digit-7').click()}
+        else if(event.key == "8") {document.querySelector('#digit-8').click()}
+        else if(event.key == "9") {document.querySelector('#digit-9').click()}
+        else if(event.key == "+") {document.querySelector('#plus').click()}
+        else if(event.key == "-") {document.querySelector('#minus').click()}
+        else if(event.key == "*") {document.querySelector('#multiply').click()}
+        else if(event.key == "/") {document.querySelector('#divide').click()}
+        else if(event.key == "Enter") {document.querySelector('#equals').click()}
+        else if(event.key == '.') {document.querySelector('#dot').click()}
+        else if(event.key == 'Backspace') {document.querySelector('#backspace').click()}
+        else if(event.key == 'Delete') {document.querySelector('#delete').click()}
+    
+        if (display.textContent.length > 15) {
+            display.textContent = display.textContent.slice(0, 15);
+        }
+    });
+}
+
+keyboardSuport();
