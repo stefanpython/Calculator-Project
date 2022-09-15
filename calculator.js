@@ -188,10 +188,11 @@ function operate() {
     a = Number(arr.join('').split(operator)[0]);
     b = Number(arr.join('').split(operator)[1]);
 
-    if (newNum[0] === '-'){
+    if (newNum[0] === '-' && operator == newNum[0]){
         a = -Number(arr.join('').split(operator)[1]);
         b = Number(arr.join('').split(operator)[2]);
         }
+
     }
    
     // Loop for doing operation with different operators one after the other
