@@ -214,7 +214,13 @@ function operate() {
         b = Number(bar.join('').split(operator)[1]);
     }
 
-    result = calculate(a, b, operator);
+    // Display error message if user tries to divide by 0;
+    if (b === 0) {
+        return display.textContent = '0 division detected, can`t do it dummy'
+    }else {
+        result = calculate(a, b, operator);
+    }
+    
     
     if (display.textContent == 0) {
         display.textContent = '';
@@ -222,10 +228,9 @@ function operate() {
         return display.textContent = Math.round(result * 100) / 100; // Add Math.round to prevent screen overflow for long decimals
     }
     
-
 }
 
-// Add clear button
+// Add clear button 
 const clear = document.getElementById('delete');
 
 clear.addEventListener('click', () => {
