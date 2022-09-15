@@ -225,3 +225,9 @@ function operate() {
 
 }
 
+// Add clear button
+const clear = document.getElementById('delete');
+
+clear.addEventListener('click', () => {
+    display.textContent = '';
+})
