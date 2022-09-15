@@ -140,6 +140,7 @@ operatorType();
 
 
 let result = 0;
+let z = 0;
 
 function operate() {
     
@@ -216,7 +217,7 @@ function operate() {
 
     // Display error message if user tries to divide by 0;
     if (b === 0) {
-        return display.textContent = '0 division detected, can`t do it dummy'
+        return display.textContent = '0 division detected, can`t do it dummy.'
     }else {
         result = calculate(a, b, operator);
     }
@@ -236,3 +237,18 @@ const clear = document.getElementById('delete');
 clear.addEventListener('click', () => {
     display.textContent = '';
 })
+
+// Implement feature to add '.' 
+const decimal = document.getElementById('dot');
+
+let once = false;
+decimal.addEventListener('click', () => {
+    once = true;
+    display.textContent += dot.value;
+
+    // Disable . button if it`s already used once
+    if (once === true) {
+        decimal.disabled = true;
+    }
+})
+
