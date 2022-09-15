@@ -161,8 +161,7 @@ function operate() {
             
         }
     }
-    
-    
+     
     let a = Number(newNum.join('').split(operator)[0]);
     let b = Number(newNum.join('').split(operator)[1]);
 
@@ -195,7 +194,7 @@ function operate() {
         }
     }
    
-    // Loop for doing operation with different operators
+    // Loop for doing operation with different operators one after the other
     let last = newNum[newNum.length - 1];
     if (last === '-' || last === '+' || last === '*' || last === '/') {
         let bar = newNum.slice(0, -1);
@@ -214,14 +213,12 @@ function operate() {
         b = Number(bar.join('').split(operator)[1]);
     }
 
-    
-
     result = calculate(a, b, operator);
     
     if (display.textContent == 0) {
         display.textContent = '';
     }else {
-        return display.textContent = result;
+        return display.textContent = Math.round(result * 100) / 100; // Add Math.round to prevent screen overflow for long decimals
     }
     
 
