@@ -258,7 +258,16 @@ backSpace.addEventListener('click', () => {
 })
 
 
+// Implement percent button function
+const percent = document.getElementById('remainder');
 
+percent.addEventListener('click', () => {
+    if (display.textContent === '') {
+        display.textContent = "Type in a digit and try again";
+    } else {
+        display.textContent = display.textContent / 100;
+    }
+})
 
 
 function keyboardSuport(){
@@ -281,6 +290,7 @@ function keyboardSuport(){
         else if(event.key == '.') {document.querySelector('#dot').click()}
         else if(event.key == 'Backspace') {document.querySelector('#backspace').click()}
         else if(event.key == 'Delete') {document.querySelector('#delete').click()}
+        else if(event.key == '%') {document.querySelector('#remainder').click()}
     
         if (display.textContent.length > 15) {
             display.textContent = display.textContent.slice(0, 15);
