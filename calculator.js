@@ -231,7 +231,7 @@ const clear = document.getElementById('delete');
 
 clear.addEventListener('click', () => {
     decimal.disabled = false;
-    display.textContent = '';
+    location.reload();
 })
 
 
